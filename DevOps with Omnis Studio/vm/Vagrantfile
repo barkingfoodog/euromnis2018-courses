@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "suran/macos1011"
+
+	## Allow mapping the salt folder
+  config.vm.synced_folder "salt/", "/srv/salt/", type: "nfs"
+  config.vm.network "private_network", ip: "192.168.33.33"
+
+	## Provision with salt masterless
+	config.vm.provision :salt do |salt|
+	  salt.masterless = true
+	  salt.run_highstate = true
+	end
+end

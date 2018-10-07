@@ -1,0 +1,5 @@
+base:
+ '*':
+  - java
+  - jenkins
+  - omnis

@@ -1,0 +1,13 @@
+{% set omnis = salt['grains.filter_by'](
+    {
+    	'default': {},
+    	'MacOS': {
+	      'application_directory': 'Omnis Studio 8.1.6 x64.app',
+        'installer_source': 'ftp://omnis.net/OmnisStudio/Studio816/OmnisStudio/Development/osx64/Omnis-Studio-8.1.6-x64.dmg',
+	      'installer_source_hash': 'F95DB80F5E06F128A7E3B8C12D925A5BBAE63089D4EACBD81F93F285AC0AF811'
+	    }
+  	},
+    grain='os',
+    merge=salt['pillar.get']('omnis:lookup'),
+    base='default'
+) %}
